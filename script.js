@@ -8,7 +8,7 @@ const updateTime = () => {
 	let date = new Date(),
 		secToDeg = (date.getSeconds() / 60) * 360,
 		minToDeg = (date.getMinutes() / 60) * 360,
-		hourToDeg = date.getHours() / 24;
+		hourToDeg = (date.getHours() / 12) * 360;
 
 	secondHand.style.transform = `rotate(${secToDeg}deg)`;
 	minuteHand.style.transform = `rotate(${minToDeg}deg)`;
@@ -19,7 +19,7 @@ setInterval(updateTime, 1000);
 
 updateTime();
 
-if (localStorage.getItem("mode") === "Dark Mode") {
+if (localStorage.getItem("mode") == "Dark Mode") {
 	body.classList.add("dark");
 	modeSwitch.textContent = "Light Mode";
 }
